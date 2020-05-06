@@ -1,0 +1,40 @@
+.link {
+    fill: none;
+    stroke: #d3d3d3;
+    stroke-width: 1.5px;
+  }
+  
+  /* #licensing {
+    fill: #ff4455;
+  }
+  
+  .link.licensing {
+    stroke: #ff4455;
+  }
+   */
+  .link.resolved {
+    stroke-dasharray: 0,2 1;
+  }
+  circle {
+    /* fill: #ccc; */
+    stroke: #333;
+    stroke-width: 1.2px;
+  }
+  
+  text {
+    font: 10px sans-serif;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  }
+
+  .text{
+    background: #eee;
+  }
+
+  .tooltip{
+    background: #000;
+    border-radius: 4px;
+    color:#fff;
+    font-size: 12px;
+    padding:5px 10px;
+  }

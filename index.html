@@ -125,7 +125,8 @@
                     'stroke-width': (d) => {
                         return d.strength * 2
                     },
-                    'stroke': '#999'
+                    'stroke': '#999',
+                    
                 })
                 .style("pointer-events", "none");
 
@@ -178,26 +179,28 @@
                 .style("fill", function (d, i) {
                     return colors(i);
                 })
+                // 這個用法要先寫 pattern
+                // .style("fill", 'url("http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png")')
                 .on('mouseover', tool_tip.show)
                 .on('mouseout', tool_tip.hide);
 
-            // 亂加圖片
-            node.append("svg:image")
-                .attr("xlink:href", function (d) {
-                    return 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png';
-                })
-                .attr("x", function (d) {
-                    return (0);
-                })
-                .attr("y", function (d) {
-                    return -16;
-                })
-                .attr("height", function (d) {
-                    return 40;
-                })
-                .attr("width", function (d) {
-                    return 40;
-                })
+            // 亂加圖片 第一種方式
+            // node.append("svg:image")
+            //     .attr("xlink:href", function (d) {
+            //         return 'http://marvel-force-chart.surge.sh/marvel_force_chart_img/magneto.png';
+            //     })
+            //     .attr("x", function (d) {
+            //         return (0);
+            //     })
+            //     .attr("y", function (d) {
+            //         return -16;
+            //     })
+            //     .attr("height", function (d) {
+            //         return 40;
+            //     })
+            //     .attr("width", function (d) {
+            //         return 40;
+            //     })
 
 
 

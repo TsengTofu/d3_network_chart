@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+<!-- 50 筆資料的版本 -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Rings with D3plus -> 255 datas</title>
+  <!-- load D3js -->
+  <script type="text/javascript" src="https://d3plus.org/js/d3.js"></script>
+  <!-- load D3plus after D3js -->
+  <script src="https://d3plus.org/js/d3plus.js"></script>
+</head>
+
+<body>
+  <button class="filter-button">Click to Filter</button>
+  <div id="viz"></div>
+  <script>
+    var visualization;
+    var company = [
+  {
+    company: "1701392Z GR Equity"
+  },
+  {
+    company: "MKSI US Equity"
+  },
+  {
+    company: "BHE US Equity"
+  },
+  {
+    company: "6971 JP Equity"
+  },
+  {
+    company: "UCTT US Equity"
+  },
+  {
+    company: "ENTG US Equity"
+  },
+  {
+    company: "VACN SW Equity"
+  },
+  {
+    company: "BRKS US Equity"
+  },
+  {
+    company: "IIVI US Equity"
+  },
+  {
+    company: "LITE US Equity"
+  },
+  {
+    company: "7731 JP Equity"
+  },
+  {
+    company: "PLAB US Equity"
+  },
+  {
+    company: "ATE FP Equity"
+  },
+  {
+    company: "0708815D US Equity"
+  },
+  {
+    company: "1722 TT Equity"
+  },
+  {
+    company: "2081Z NA Equity"
+  },
+  {
+    company: "2338 TT Equity"
+  },
+  {
+    company: "300293 CH Equity"
+  },
+  {
+    company: "3023 TT Equity"
+  },
+  {
+    company: "3178 TT Equity"
+  },
+  {
+    company: "3294Z GR Equity"
+  },
+  {
+    company: "3680 TT Equity"
+  },
+  {
+    company: "4172645Z NA Equity"
+  },
+  {
+    company: "4780Z GR Equity"
+  },
+  {
+    company: "5607 TT Equity"
+  },
+  {
+    company: "6196 TT Equity"
+  },
+  {
+    company: "6954 JP Equity"
+  },
+  {
+    company: "8109 TT Equity"
+  },
+  {
+    company: "ES US Equity"
+  },
+  {
+    company: "IBE SM Equity"
+  },
+  {
+    company: "ICHR US Equity"
+  },
+  {
+    company: "MDB US Equity"
+  },
+  {
+    company: "PCG US Equity"
+  },
+  {
+    company: "SMCI US Equity"
+  },
+  {
+    company: "SRE US Equity"
+  },
+  {
+    company: "FLEX US Equity"
+  },
+  {
+    company: "CLS CN Equity"
+  },
+  {
+    company: "AEIS US Equity"
+  },
+  {
+    company: "6323 JP Equity"
+  },
+  {
+    company: "7705 JP Equity"
+  },
+  {
+    company: "5217 JP Equity"
+  },
+  {
+    company: "166090 KS Equity"
+  },
+  {
+    company: "A"
+  },
+  {
+    company: "B"
+  }
+];
+var edges = [
+  {
+    source: "1701392Z GR Equity",
+    target: "A",
+    strength: "0.08"
+  },
+  {
+    source: "MKSI US Equity",
+    target: "A",
+    strength: "0.26"
+  },
+  {
+    source: "BHE US Equity",
+    target: "A",
+    strength: "0.98"
+  },
+  {
+    source: "6971 JP Equity",
+    target: "A",
+    strength: "0.99"
+  },
+  {
+    source: "UCTT US Equity",
+    target: "A",
+    strength: "0.63"
+  },
+  {
+    source: "ENTG US Equity",
+    target: "A",
+    strength: "0.96"
+  },
+  {
+    source: "VACN SW Equity",
+    target: "A",
+    strength: "0.78"
+  },
+  {
+    source: "BRKS US Equity",
+    target: "A",
+    strength: "0.07"
+  },
+  {
+    source: "IIVI US Equity",
+    target: "A",
+    strength: "0.38"
+  },
+  {
+    source: "LITE US Equity",
+    target: "A",
+    strength: "0.90"
+  },
+  {
+    source: "7731 JP Equity",
+    target: "A",
+    strength: "0.68"
+  },
+  {
+    source: "PLAB US Equity",
+    target: "A",
+    strength: "0.18"
+  },
+  {
+    source: "ATE FP Equity",
+    target: "A",
+    strength: "0.86"
+  },
+  {
+    source: "0708815D US Equity",
+    target: "A",
+    strength: "0.72"
+  },
+  {
+    source: "1722 TT Equity",
+    target: "A",
+    strength: "0.66"
+  },
+  {
+    source: "2081Z NA Equity",
+    target: "A",
+    strength: "0.97"
+  },
+  {
+    source: "2338 TT Equity",
+    target: "A",
+    strength: "0.88"
+  },
+  {
+    source: "300293 CH Equity",
+    target: "A",
+    strength: "0.20"
+  },
+  {
+    source: "3023 TT Equity",
+    target: "A",
+    strength: "0.05"
+  },
+  {
+    source: "3178 TT Equity",
+    target: "A",
+    strength: "0.88"
+  },
+  {
+    source: "3294Z GR Equity",
+    target: "A",
+    strength: "0.70"
+  },
+  {
+    source: "3680 TT Equity",
+    target: "A",
+    strength: "0.98"
+  },
+  {
+    source: "4172645Z NA Equity",
+    target: "A",
+    strength: "0.85"
+  },
+  {
+    source: "4780Z GR Equity",
+    target: "A",
+    strength: "0.26"
+  },
+  {
+    source: "5607 TT Equity",
+    target: "A",
+    strength: "0.52"
+  },
+  {
+    source: "6196 TT Equity",
+    target: "A",
+    strength: "0.48"
+  },
+  {
+    source: "6954 JP Equity",
+    target: "A",
+    strength: "0.88"
+  },
+  {
+    source: "8109 TT Equity",
+    target: "A",
+    strength: "0.28"
+  },
+  {
+    source: "ES US Equity",
+    target: "A",
+    strength: "0.94"
+  },
+  {
+    source: "IBE SM Equity",
+    target: "A",
+    strength: "0.56"
+  },
+  {
+    source: "ICHR US Equity",
+    target: "A",
+    strength: "0.66"
+  },
+  {
+    source: "MDB US Equity",
+    target: "A",
+    strength: "0.11"
+  },
+  {
+    source: "PCG US Equity",
+    target: "A",
+    strength: "0.15"
+  },
+  {
+    source: "SMCI US Equity",
+    target: "A",
+    strength: "0.53"
+  },
+  {
+    source: "SRE US Equity",
+    target: "A",
+    strength: "0.05"
+  },
+  {
+    source: "FLEX US Equity",
+    target: "B",
+    strength: "0.28"
+  },
+  {
+    source: "CLS CN Equity",
+    target: "B",
+    strength: "0.23"
+  },
+  {
+    source: "UCTT US Equity",
+    target: "B",
+    strength: "0.08"
+  },
+  {
+    source: "ICHR US Equity",
+    target: "B",
+    strength: "0.82"
+  },
+  {
+    source: "MKSI US Equity",
+    target: "B",
+    strength: "0.50"
+  },
+  {
+    source: "AEIS US Equity",
+    target: "B",
+    strength: "0.16"
+  },
+  {
+    source: "VACN SW Equity",
+    target: "B",
+    strength: "0.82"
+  },
+  {
+    source: "BHE US Equity",
+    target: "B",
+    strength: "0.20"
+  },
+  {
+    source: "BRKS US Equity",
+    target: "B",
+    strength: "0.40"
+  },
+  {
+    source: "6323 JP Equity",
+    target: "B",
+    strength: "0.75"
+  },
+  {
+    source: "ENTG US Equity",
+    target: "B",
+    strength: "0.29"
+  },
+  {
+    source: "7705 JP Equity",
+    target: "B",
+    strength: "0.44"
+  },
+  {
+    source: "5217 JP Equity",
+    target: "B",
+    strength: "0.78"
+  },
+  {
+    source: "166090 KS Equity",
+    target: "B",
+    strength: "0.31"
+  }
+];
+
+    /* Now here's where we actually create the network */
+    visualization = d3plus.viz()
+      // .id("artist_id")              // set id to match on nodes
+      .attrs(company) // attrs e.g. names, colors etc.
+      .container("#viz") // container DIV to hold the viz
+      .type("rings") // visualization type
+      .focus("A") // center node on Beyonce
+      .attrs("text", d => {
+        return d.id
+      })
+      // set text to display on nodes
+      .edges({
+        // "color": (d=> 'red'),
+        "value": edges, // set data for edges (default)
+        "label": "strength", // show edge labels
+        "arrows": true, // show directional arrows
+        // "large" :100,
+        // "size": 2, 粗細會影響到 arrows
+      })
+      // 可以點下去去呼叫其他關聯的 nodes，但是設定了就沒辦法像原本那樣的操作了
+      // .mouse({
+      //   click: function () {
+      //     console.log("Hello you");
+      //   }
+      // })
+      .draw() // finally, draw the visualization!
+  </script>
+</body>

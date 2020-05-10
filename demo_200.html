@@ -1,0 +1,1868 @@
+<!doctype html>
+<html>
+<!-- 255 筆資料的版本 -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Rings with D3plus -> 255 datas</title>
+  <!-- load D3js -->
+  <script type="text/javascript" src="https://d3plus.org/js/d3.js"></script>
+  <!-- load D3plus after D3js -->
+  <script src="https://d3plus.org/js/d3plus.js"></script>
+</head>
+
+<body>
+  <button class="filter-button">Click to Filter</button>
+  <div id="viz"></div>
+  <script>
+    var visualization;
+    var company = [{
+        "company": "1701392Z GR Equity"
+      },
+      {
+        "company": "MKSI US Equity"
+      },
+      {
+        "company": "BHE US Equity"
+      },
+      {
+        "company": "6971 JP Equity"
+      },
+      {
+        "company": "UCTT US Equity"
+      },
+      {
+        "company": "ENTG US Equity"
+      },
+      {
+        "company": "VACN SW Equity"
+      },
+      {
+        "company": "BRKS US Equity"
+      },
+      {
+        "company": "IIVI US Equity"
+      },
+      {
+        "company": "LITE US Equity"
+      },
+      {
+        "company": "7731 JP Equity"
+      },
+      {
+        "company": "PLAB US Equity"
+      },
+      {
+        "company": "ATE FP Equity"
+      },
+      {
+        "company": "0708815D US Equity"
+      },
+      {
+        "company": "1722 TT Equity"
+      },
+      {
+        "company": "2081Z NA Equity"
+      },
+      {
+        "company": "2338 TT Equity"
+      },
+      {
+        "company": "300293 CH Equity"
+      },
+      {
+        "company": "3023 TT Equity"
+      },
+      {
+        "company": "3178 TT Equity"
+      },
+      {
+        "company": "3294Z GR Equity"
+      },
+      {
+        "company": "3680 TT Equity"
+      },
+      {
+        "company": "4172645Z NA Equity"
+      },
+      {
+        "company": "4780Z GR Equity"
+      },
+      {
+        "company": "5607 TT Equity"
+      },
+      {
+        "company": "6196 TT Equity"
+      },
+      {
+        "company": "6954 JP Equity"
+      },
+      {
+        "company": "8109 TT Equity"
+      },
+      {
+        "company": "ES US Equity"
+      },
+      {
+        "company": "IBE SM Equity"
+      },
+      {
+        "company": "ICHR US Equity"
+      },
+      {
+        "company": "MDB US Equity"
+      },
+      {
+        "company": "PCG US Equity"
+      },
+      {
+        "company": "SMCI US Equity"
+      },
+      {
+        "company": "SRE US Equity"
+      },
+      {
+        "company": "FLEX US Equity"
+      },
+      {
+        "company": "CLS CN Equity"
+      },
+      {
+        "company": "AEIS US Equity"
+      },
+      {
+        "company": "6323 JP Equity"
+      },
+      {
+        "company": "7705 JP Equity"
+      },
+      {
+        "company": "5217 JP Equity"
+      },
+      {
+        "company": "166090 KS Equity"
+      },
+      {
+        "company": "ROLL US Equity"
+      },
+      {
+        "company": "LFUS US Equity"
+      },
+      {
+        "company": "ONTO US Equity"
+      },
+      {
+        "company": "CYBE US Equity"
+      },
+      {
+        "company": "ZBRA US Equity"
+      },
+      {
+        "company": "PTC US Equity"
+      },
+      {
+        "company": "0206836D US Equity"
+      },
+      {
+        "company": "036530 KS Equity"
+      },
+      {
+        "company": "0545852D US Equity"
+      },
+      {
+        "company": "064960 KS Equity"
+      },
+      {
+        "company": "067310 KS Equity"
+      },
+      {
+        "company": "108230 KS Equity"
+      },
+      {
+        "company": "114810 KS Equity"
+      },
+      {
+        "company": "117730 KS Equity"
+      },
+      {
+        "company": "1513 TT Equity"
+      },
+      {
+        "company": "176560 KS Equity"
+      },
+      {
+        "company": "3413 TT Equity"
+      },
+      {
+        "company": "3551 TT Equity"
+      },
+      {
+        "company": "3756 JP Equity"
+      },
+      {
+        "company": "5403 TT Equity"
+      },
+      {
+        "company": "6507 JP Equity"
+      },
+      {
+        "company": "6667 TT Equity"
+      },
+      {
+        "company": "6890 JP Equity"
+      },
+      {
+        "company": "7748 JP Equity"
+      },
+      {
+        "company": "8091 TT Equity"
+      },
+      {
+        "company": "8383 TT Equity"
+      },
+      {
+        "company": "8995278Z US Equity"
+      },
+      {
+        "company": "BRK/A US Equity"
+      },
+      {
+        "company": "COHR US Equity"
+      },
+      {
+        "company": "COTN SW Equity"
+      },
+      {
+        "company": "ESI FP Equity"
+      },
+      {
+        "company": "LASR US Equity"
+      },
+      {
+        "company": "MRN FP Equity"
+      },
+      {
+        "company": "NG/ LN Equity"
+      },
+      {
+        "company": "NPO US Equity"
+      },
+      {
+        "company": "NVDA US Equity"
+      },
+      {
+        "company": "PVS AU Equity"
+      },
+      {
+        "company": "STL LN Equity"
+      },
+      {
+        "company": "TTR1 GR Equity"
+      },
+      {
+        "company": "6501 JP Equity"
+      },
+      {
+        "company": "6622 JP Equity"
+      },
+      {
+        "company": "3374 JP Equity"
+      },
+      {
+        "company": "6918 JP Equity"
+      },
+      {
+        "company": "6264 JP Equity"
+      },
+      {
+        "company": "2760 JP Equity"
+      },
+      {
+        "company": "6258 JP Equity"
+      },
+      {
+        "company": "036090 KS Equity"
+      },
+      {
+        "company": "074600 KS Equity"
+      },
+      {
+        "company": "136510 KS Equity"
+      },
+      {
+        "company": "2163 JP Equity"
+      },
+      {
+        "company": "2458 JP Equity"
+      },
+      {
+        "company": "3433 JP Equity"
+      },
+      {
+        "company": "3602822Z US Equity"
+      },
+      {
+        "company": "4208 JP Equity"
+      },
+      {
+        "company": "6139 TT Equity"
+      },
+      {
+        "company": "6291 JP Equity"
+      },
+      {
+        "company": "6332 JP Equity"
+      },
+      {
+        "company": "6742 JP Equity"
+      },
+      {
+        "company": "9501 JP Equity"
+      },
+      {
+        "company": "9506 JP Equity"
+      },
+      {
+        "company": "9508 JP Equity"
+      },
+      {
+        "company": "9995 JP Equity"
+      },
+      {
+        "company": "PXLW US Equity"
+      },
+      {
+        "company": "UTL US Equity"
+      },
+      {
+        "company": "PLXS US Equity"
+      },
+      {
+        "company": "VPG US Equity"
+      },
+      {
+        "company": "IPGP US Equity"
+      },
+      {
+        "company": "1612 TT Equity"
+      },
+      {
+        "company": "CTXS US Equity"
+      },
+      {
+        "company": "KEYS US Equity"
+      },
+      {
+        "company": "MET US Equity"
+      },
+      {
+        "company": "NTAP US Equity"
+      },
+      {
+        "company": "PPL US Equity"
+      },
+      {
+        "company": "7012 JP Equity"
+      },
+      {
+        "company": "JBL US Equity"
+      },
+      {
+        "company": "NSTG US Equity"
+      },
+      {
+        "company": "SNR LN Equity"
+      },
+      {
+        "company": "6856 JP Equity"
+      },
+      {
+        "company": "ATCOA SS Equity"
+      },
+      {
+        "company": "0063104D US Equity"
+      },
+      {
+        "company": "0381504D US Equity"
+      },
+      {
+        "company": "064760 KS Equity"
+      },
+      {
+        "company": "178320 KS Equity"
+      },
+      {
+        "company": "4042 JP Equity"
+      },
+      {
+        "company": "5332 JP Equity"
+      },
+      {
+        "company": "6667292Z US Equity"
+      },
+      {
+        "company": "9502 JP Equity"
+      },
+      {
+        "company": "9504 JP Equity"
+      },
+      {
+        "company": "9505 JP Equity"
+      },
+      {
+        "company": "FJKINZ JP Equity"
+      },
+      {
+        "company": "FTS CN Equity"
+      },
+      {
+        "company": "IDA US Equity"
+      },
+      {
+        "company": "POR US Equity"
+      },
+      {
+        "company": "RELL US Equity"
+      },
+      {
+        "company": "TEXONZ KS Equity"
+      },
+      {
+        "company": "6490 JP Equity"
+      },
+      {
+        "company": "6645 JP Equity"
+      },
+      {
+        "company": "6594 JP Equity"
+      },
+      {
+        "company": "8140 JP Equity"
+      },
+      {
+        "company": "7510 JP Equity"
+      },
+      {
+        "company": "042380 KF Equity"
+      },
+      {
+        "company": "1248727D JP Equity"
+      },
+      {
+        "company": "1975 JP Equity"
+      },
+      {
+        "company": "4272 JP Equity"
+      },
+      {
+        "company": "4464 JP Equity"
+      },
+      {
+        "company": "4631 JP Equity"
+      },
+      {
+        "company": "4634 JP Equity"
+      },
+      {
+        "company": "5214 JP Equity"
+      },
+      {
+        "company": "5393 JP Equity"
+      },
+      {
+        "company": "6273 JP Equity"
+      },
+      {
+        "company": "6301 JP Equity"
+      },
+      {
+        "company": "6349 JP Equity"
+      },
+      {
+        "company": "6407 JP Equity"
+      },
+      {
+        "company": "6480 JP Equity"
+      },
+      {
+        "company": "6654 JP Equity"
+      },
+      {
+        "company": "6677 JP Equity"
+      },
+      {
+        "company": "7701 JP Equity"
+      },
+      {
+        "company": "7911 JP Equity"
+      },
+      {
+        "company": "8060 JP Equity"
+      },
+      {
+        "company": "8137 JP Equity"
+      },
+      {
+        "company": "8148 JP Equity"
+      },
+      {
+        "company": "9363 JP Equity"
+      },
+      {
+        "company": "9503 JP Equity"
+      },
+      {
+        "company": "ACLS US Equity"
+      },
+      {
+        "company": "6762 JP Equity"
+      },
+      {
+        "company": "3132 JP Equity"
+      },
+      {
+        "company": "8084 JP Equity"
+      },
+      {
+        "company": "INTT US Equity"
+      },
+      {
+        "company": "073570 KS Equity"
+      },
+      {
+        "company": "092870 KS Equity"
+      },
+      {
+        "company": "MXL US Equity"
+      },
+      {
+        "company": "TTMI US Equity"
+      },
+      {
+        "company": "131290 KS Equity"
+      },
+      {
+        "company": "A"
+      },
+      {
+        "company": "B"
+      },
+      {
+        "company": "C"
+      },
+      {
+        "company": "D"
+      },
+      {
+        "company": "E"
+      },
+      {
+        "company": "F"
+      },
+      {
+        "company": "G"
+      },
+      {
+        "company": "H"
+      }
+    ];
+
+    var edges = [{
+        "source": "1701392Z GR Equity",
+        "target": "A",
+        "strength": "0.08"
+      },
+      {
+        "source": "MKSI US Equity",
+        "target": "A",
+        "strength": "0.26"
+      },
+      {
+        "source": "BHE US Equity",
+        "target": "A",
+        "strength": "0.98"
+      },
+      {
+        "source": "6971 JP Equity",
+        "target": "A",
+        "strength": "0.99"
+      },
+      {
+        "source": "UCTT US Equity",
+        "target": "A",
+        "strength": "0.63"
+      },
+      {
+        "source": "ENTG US Equity",
+        "target": "A",
+        "strength": "0.96"
+      },
+      {
+        "source": "VACN SW Equity",
+        "target": "A",
+        "strength": "0.78"
+      },
+      {
+        "source": "BRKS US Equity",
+        "target": "A",
+        "strength": "0.07"
+      },
+      {
+        "source": "IIVI US Equity",
+        "target": "A",
+        "strength": "0.38"
+      },
+      {
+        "source": "LITE US Equity",
+        "target": "A",
+        "strength": "0.90"
+      },
+      {
+        "source": "7731 JP Equity",
+        "target": "A",
+        "strength": "0.68"
+      },
+      {
+        "source": "PLAB US Equity",
+        "target": "A",
+        "strength": "0.18"
+      },
+      {
+        "source": "ATE FP Equity",
+        "target": "A",
+        "strength": "0.86"
+      },
+      {
+        "source": "0708815D US Equity",
+        "target": "A",
+        "strength": "0.72"
+      },
+      {
+        "source": "1722 TT Equity",
+        "target": "A",
+        "strength": "0.66"
+      },
+      {
+        "source": "2081Z NA Equity",
+        "target": "A",
+        "strength": "0.97"
+      },
+      {
+        "source": "2338 TT Equity",
+        "target": "A",
+        "strength": "0.88"
+      },
+      {
+        "source": "300293 CH Equity",
+        "target": "A",
+        "strength": "0.20"
+      },
+      {
+        "source": "3023 TT Equity",
+        "target": "A",
+        "strength": "0.05"
+      },
+      {
+        "source": "3178 TT Equity",
+        "target": "A",
+        "strength": "0.88"
+      },
+      {
+        "source": "3294Z GR Equity",
+        "target": "A",
+        "strength": "0.70"
+      },
+      {
+        "source": "3680 TT Equity",
+        "target": "A",
+        "strength": "0.98"
+      },
+      {
+        "source": "4172645Z NA Equity",
+        "target": "A",
+        "strength": "0.85"
+      },
+      {
+        "source": "4780Z GR Equity",
+        "target": "A",
+        "strength": "0.26"
+      },
+      {
+        "source": "5607 TT Equity",
+        "target": "A",
+        "strength": "0.52"
+      },
+      {
+        "source": "6196 TT Equity",
+        "target": "A",
+        "strength": "0.48"
+      },
+      {
+        "source": "6954 JP Equity",
+        "target": "A",
+        "strength": "0.88"
+      },
+      {
+        "source": "8109 TT Equity",
+        "target": "A",
+        "strength": "0.28"
+      },
+      {
+        "source": "ES US Equity",
+        "target": "A",
+        "strength": "0.94"
+      },
+      {
+        "source": "IBE SM Equity",
+        "target": "A",
+        "strength": "0.56"
+      },
+      {
+        "source": "ICHR US Equity",
+        "target": "A",
+        "strength": "0.66"
+      },
+      {
+        "source": "MDB US Equity",
+        "target": "A",
+        "strength": "0.11"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "A",
+        "strength": "0.15"
+      },
+      {
+        "source": "SMCI US Equity",
+        "target": "A",
+        "strength": "0.53"
+      },
+      {
+        "source": "SRE US Equity",
+        "target": "A",
+        "strength": "0.05"
+      },
+      {
+        "source": "FLEX US Equity",
+        "target": "B",
+        "strength": "0.28"
+      },
+      {
+        "source": "CLS CN Equity",
+        "target": "B",
+        "strength": "0.23"
+      },
+      {
+        "source": "UCTT US Equity",
+        "target": "B",
+        "strength": "0.08"
+      },
+      {
+        "source": "ICHR US Equity",
+        "target": "B",
+        "strength": "0.82"
+      },
+      {
+        "source": "MKSI US Equity",
+        "target": "B",
+        "strength": "0.50"
+      },
+      {
+        "source": "AEIS US Equity",
+        "target": "B",
+        "strength": "0.16"
+      },
+      {
+        "source": "VACN SW Equity",
+        "target": "B",
+        "strength": "0.82"
+      },
+      {
+        "source": "BHE US Equity",
+        "target": "B",
+        "strength": "0.20"
+      },
+      {
+        "source": "BRKS US Equity",
+        "target": "B",
+        "strength": "0.40"
+      },
+      {
+        "source": "6323 JP Equity",
+        "target": "B",
+        "strength": "0.75"
+      },
+      {
+        "source": "ENTG US Equity",
+        "target": "B",
+        "strength": "0.29"
+      },
+      {
+        "source": "7705 JP Equity",
+        "target": "B",
+        "strength": "0.44"
+      },
+      {
+        "source": "5217 JP Equity",
+        "target": "B",
+        "strength": "0.78"
+      },
+      {
+        "source": "166090 KS Equity",
+        "target": "B",
+        "strength": "0.31"
+      },
+      {
+        "source": "IIVI US Equity",
+        "target": "B",
+        "strength": "0.94"
+      },
+      {
+        "source": "ROLL US Equity",
+        "target": "B",
+        "strength": "0.01"
+      },
+      {
+        "source": "LFUS US Equity",
+        "target": "B",
+        "strength": "0.53"
+      },
+      {
+        "source": "ONTO US Equity",
+        "target": "B",
+        "strength": "0.22"
+      },
+      {
+        "source": "CYBE US Equity",
+        "target": "B",
+        "strength": "0.01"
+      },
+      {
+        "source": "ZBRA US Equity",
+        "target": "B",
+        "strength": "0.48"
+      },
+      {
+        "source": "PTC US Equity",
+        "target": "B",
+        "strength": "0.66"
+      },
+      {
+        "source": "0206836D US Equity",
+        "target": "B",
+        "strength": "0.90"
+      },
+      {
+        "source": "036530 KS Equity",
+        "target": "B",
+        "strength": "0.62"
+      },
+      {
+        "source": "0545852D US Equity",
+        "target": "B",
+        "strength": "0.21"
+      },
+      {
+        "source": "064960 KS Equity",
+        "target": "B",
+        "strength": "0.11"
+      },
+      {
+        "source": "067310 KS Equity",
+        "target": "B",
+        "strength": "0.49"
+      },
+      {
+        "source": "108230 KS Equity",
+        "target": "B",
+        "strength": "0.20"
+      },
+      {
+        "source": "114810 KS Equity",
+        "target": "B",
+        "strength": "0.24"
+      },
+      {
+        "source": "117730 KS Equity",
+        "target": "B",
+        "strength": "0.86"
+      },
+      {
+        "source": "1513 TT Equity",
+        "target": "B",
+        "strength": "0.51"
+      },
+      {
+        "source": "176560 KS Equity",
+        "target": "B",
+        "strength": "0.17"
+      },
+      {
+        "source": "3178 TT Equity",
+        "target": "B",
+        "strength": "0.38"
+      },
+      {
+        "source": "3413 TT Equity",
+        "target": "B",
+        "strength": "0.33"
+      },
+      {
+        "source": "3551 TT Equity",
+        "target": "B",
+        "strength": "0.93"
+      },
+      {
+        "source": "3756 JP Equity",
+        "target": "B",
+        "strength": "0.37"
+      },
+      {
+        "source": "5403 TT Equity",
+        "target": "B",
+        "strength": "0.45"
+      },
+      {
+        "source": "6196 TT Equity",
+        "target": "B",
+        "strength": "0.91"
+      },
+      {
+        "source": "6507 JP Equity",
+        "target": "B",
+        "strength": "0.41"
+      },
+      {
+        "source": "6667 TT Equity",
+        "target": "B",
+        "strength": "0.35"
+      },
+      {
+        "source": "6890 JP Equity",
+        "target": "B",
+        "strength": "0.72"
+      },
+      {
+        "source": "7748 JP Equity",
+        "target": "B",
+        "strength": "0.42"
+      },
+      {
+        "source": "8091 TT Equity",
+        "target": "B",
+        "strength": "0.49"
+      },
+      {
+        "source": "8383 TT Equity",
+        "target": "B",
+        "strength": "0.90"
+      },
+      {
+        "source": "8995278Z US Equity",
+        "target": "B",
+        "strength": "0.41"
+      },
+      {
+        "source": "BRK/A US Equity",
+        "target": "B",
+        "strength": "0.55"
+      },
+      {
+        "source": "COHR US Equity",
+        "target": "B",
+        "strength": "0.13"
+      },
+      {
+        "source": "COTN SW Equity",
+        "target": "B",
+        "strength": "0.68"
+      },
+      {
+        "source": "ESI FP Equity",
+        "target": "B",
+        "strength": "0.85"
+      },
+      {
+        "source": "LASR US Equity",
+        "target": "B",
+        "strength": "0.99"
+      },
+      {
+        "source": "MRN FP Equity",
+        "target": "B",
+        "strength": "0.36"
+      },
+      {
+        "source": "NG/ LN Equity",
+        "target": "B",
+        "strength": "0.41"
+      },
+      {
+        "source": "NPO US Equity",
+        "target": "B",
+        "strength": "0.51"
+      },
+      {
+        "source": "NVDA US Equity",
+        "target": "B",
+        "strength": "0.21"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "B",
+        "strength": "0.45"
+      },
+      {
+        "source": "PVS AU Equity",
+        "target": "B",
+        "strength": "0.23"
+      },
+      {
+        "source": "STL LN Equity",
+        "target": "B",
+        "strength": "0.08"
+      },
+      {
+        "source": "TTR1 GR Equity",
+        "target": "B",
+        "strength": "0.83"
+      },
+      {
+        "source": "6501 JP Equity",
+        "target": "C",
+        "strength": "0.77"
+      },
+      {
+        "source": "6622 JP Equity",
+        "target": "C",
+        "strength": "0.44"
+      },
+      {
+        "source": "3374 JP Equity",
+        "target": "C",
+        "strength": "0.93"
+      },
+      {
+        "source": "MKSI US Equity",
+        "target": "C",
+        "strength": "0.11"
+      },
+      {
+        "source": "VACN SW Equity",
+        "target": "C",
+        "strength": "0.18"
+      },
+      {
+        "source": "166090 KS Equity",
+        "target": "C",
+        "strength": "0.67"
+      },
+      {
+        "source": "ENTG US Equity",
+        "target": "C",
+        "strength": "0.49"
+      },
+      {
+        "source": "BRKS US Equity",
+        "target": "C",
+        "strength": "0.04"
+      },
+      {
+        "source": "6918 JP Equity",
+        "target": "C",
+        "strength": "0.81"
+      },
+      {
+        "source": "6264 JP Equity",
+        "target": "C",
+        "strength": "0.56"
+      },
+      {
+        "source": "5217 JP Equity",
+        "target": "C",
+        "strength": "0.58"
+      },
+      {
+        "source": "2760 JP Equity",
+        "target": "C",
+        "strength": "0.73"
+      },
+      {
+        "source": "6258 JP Equity",
+        "target": "C",
+        "strength": "0.67"
+      },
+      {
+        "source": "ONTO US Equity",
+        "target": "C",
+        "strength": "0.60"
+      },
+      {
+        "source": "036090 KS Equity",
+        "target": "C",
+        "strength": "0.41"
+      },
+      {
+        "source": "067310 KS Equity",
+        "target": "C",
+        "strength": "0.30"
+      },
+      {
+        "source": "074600 KS Equity",
+        "target": "C",
+        "strength": "0.06"
+      },
+      {
+        "source": "136510 KS Equity",
+        "target": "C",
+        "strength": "0.64"
+      },
+      {
+        "source": "2163 JP Equity",
+        "target": "C",
+        "strength": "0.56"
+      },
+      {
+        "source": "2458 JP Equity",
+        "target": "C",
+        "strength": "0.76"
+      },
+      {
+        "source": "3433 JP Equity",
+        "target": "C",
+        "strength": "0.13"
+      },
+      {
+        "source": "3602822Z US Equity",
+        "target": "C",
+        "strength": "0.53"
+      },
+      {
+        "source": "4208 JP Equity",
+        "target": "C",
+        "strength": "0.34"
+      },
+      {
+        "source": "6139 TT Equity",
+        "target": "C",
+        "strength": "0.26"
+      },
+      {
+        "source": "6291 JP Equity",
+        "target": "C",
+        "strength": "0.79"
+      },
+      {
+        "source": "6332 JP Equity",
+        "target": "C",
+        "strength": "0.52"
+      },
+      {
+        "source": "6667 TT Equity",
+        "target": "C",
+        "strength": "0.99"
+      },
+      {
+        "source": "6742 JP Equity",
+        "target": "C",
+        "strength": "0.77"
+      },
+      {
+        "source": "9501 JP Equity",
+        "target": "C",
+        "strength": "0.23"
+      },
+      {
+        "source": "9506 JP Equity",
+        "target": "C",
+        "strength": "0.46"
+      },
+      {
+        "source": "9508 JP Equity",
+        "target": "C",
+        "strength": "0.79"
+      },
+      {
+        "source": "9995 JP Equity",
+        "target": "C",
+        "strength": "0.54"
+      },
+      {
+        "source": "AEIS US Equity",
+        "target": "C",
+        "strength": "0.29"
+      },
+      {
+        "source": "ES US Equity",
+        "target": "C",
+        "strength": "0.58"
+      },
+      {
+        "source": "NG/ LN Equity",
+        "target": "C",
+        "strength": "0.66"
+      },
+      {
+        "source": "PVS AU Equity",
+        "target": "C",
+        "strength": "0.11"
+      },
+      {
+        "source": "PXLW US Equity",
+        "target": "C",
+        "strength": "0.26"
+      },
+      {
+        "source": "UTL US Equity",
+        "target": "C",
+        "strength": "0.17"
+      },
+      {
+        "source": "PLXS US Equity",
+        "target": "D",
+        "strength": "0.51"
+      },
+      {
+        "source": "MKSI US Equity",
+        "target": "D",
+        "strength": "0.34"
+      },
+      {
+        "source": "VACN SW Equity",
+        "target": "D",
+        "strength": "0.25"
+      },
+      {
+        "source": "LITE US Equity",
+        "target": "D",
+        "strength": "0.84"
+      },
+      {
+        "source": "BRKS US Equity",
+        "target": "D",
+        "strength": "0.91"
+      },
+      {
+        "source": "CYBE US Equity",
+        "target": "D",
+        "strength": "0.34"
+      },
+      {
+        "source": "IIVI US Equity",
+        "target": "D",
+        "strength": "0.58"
+      },
+      {
+        "source": "VPG US Equity",
+        "target": "D",
+        "strength": "0.25"
+      },
+      {
+        "source": "IPGP US Equity",
+        "target": "D",
+        "strength": "0.85"
+      },
+      {
+        "source": "1612 TT Equity",
+        "target": "D",
+        "strength": "0.17"
+      },
+      {
+        "source": "CTXS US Equity",
+        "target": "D",
+        "strength": "0.88"
+      },
+      {
+        "source": "ES US Equity",
+        "target": "D",
+        "strength": "0.33"
+      },
+      {
+        "source": "KEYS US Equity",
+        "target": "D",
+        "strength": "0.58"
+      },
+      {
+        "source": "MET US Equity",
+        "target": "D",
+        "strength": "0.91"
+      },
+      {
+        "source": "NTAP US Equity",
+        "target": "D",
+        "strength": "0.36"
+      },
+      {
+        "source": "NVDA US Equity",
+        "target": "D",
+        "strength": "0.43"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "D",
+        "strength": "0.81"
+      },
+      {
+        "source": "PPL US Equity",
+        "target": "D",
+        "strength": "0.93"
+      },
+      {
+        "source": "UCTT US Equity",
+        "target": "E",
+        "strength": "0.22"
+      },
+      {
+        "source": "ICHR US Equity",
+        "target": "E",
+        "strength": "0.18"
+      },
+      {
+        "source": "MKSI US Equity",
+        "target": "E",
+        "strength": "0.12"
+      },
+      {
+        "source": "PLXS US Equity",
+        "target": "E",
+        "strength": "0.73"
+      },
+      {
+        "source": "7012 JP Equity",
+        "target": "E",
+        "strength": "0.36"
+      },
+      {
+        "source": "JBL US Equity",
+        "target": "E",
+        "strength": "0.02"
+      },
+      {
+        "source": "AEIS US Equity",
+        "target": "E",
+        "strength": "0.51"
+      },
+      {
+        "source": "CLS CN Equity",
+        "target": "E",
+        "strength": "0.08"
+      },
+      {
+        "source": "BHE US Equity",
+        "target": "E",
+        "strength": "0.85"
+      },
+      {
+        "source": "BRKS US Equity",
+        "target": "E",
+        "strength": "0.42"
+      },
+      {
+        "source": "ENTG US Equity",
+        "target": "E",
+        "strength": "0.98"
+      },
+      {
+        "source": "VACN SW Equity",
+        "target": "E",
+        "strength": "0.26"
+      },
+      {
+        "source": "NSTG US Equity",
+        "target": "E",
+        "strength": "0.67"
+      },
+      {
+        "source": "SNR LN Equity",
+        "target": "E",
+        "strength": "0.95"
+      },
+      {
+        "source": "6856 JP Equity",
+        "target": "E",
+        "strength": "0.36"
+      },
+      {
+        "source": "166090 KS Equity",
+        "target": "E",
+        "strength": "0.31"
+      },
+      {
+        "source": "ATCOA SS Equity",
+        "target": "E",
+        "strength": "0.13"
+      },
+      {
+        "source": "ONTO US Equity",
+        "target": "E",
+        "strength": "0.84"
+      },
+      {
+        "source": "CYBE US Equity",
+        "target": "E",
+        "strength": "0.39"
+      },
+      {
+        "source": "PTC US Equity",
+        "target": "E",
+        "strength": "0.16"
+      },
+      {
+        "source": "ZBRA US Equity",
+        "target": "E",
+        "strength": "0.44"
+      },
+      {
+        "source": "0063104D US Equity",
+        "target": "E",
+        "strength": "0.47"
+      },
+      {
+        "source": "0206836D US Equity",
+        "target": "E",
+        "strength": "0.91"
+      },
+      {
+        "source": "0381504D US Equity",
+        "target": "E",
+        "strength": "0.14"
+      },
+      {
+        "source": "064760 KS Equity",
+        "target": "E",
+        "strength": "0.51"
+      },
+      {
+        "source": "067310 KS Equity",
+        "target": "E",
+        "strength": "0.96"
+      },
+      {
+        "source": "074600 KS Equity",
+        "target": "E",
+        "strength": "0.74"
+      },
+      {
+        "source": "178320 KS Equity",
+        "target": "E",
+        "strength": "0.79"
+      },
+      {
+        "source": "4042 JP Equity",
+        "target": "E",
+        "strength": "0.02"
+      },
+      {
+        "source": "5332 JP Equity",
+        "target": "E",
+        "strength": "0.44"
+      },
+      {
+        "source": "6667292Z US Equity",
+        "target": "E",
+        "strength": "0.07"
+      },
+      {
+        "source": "9501 JP Equity",
+        "target": "E",
+        "strength": "0.42"
+      },
+      {
+        "source": "9502 JP Equity",
+        "target": "E",
+        "strength": "0.88"
+      },
+      {
+        "source": "9504 JP Equity",
+        "target": "E",
+        "strength": "0.06"
+      },
+      {
+        "source": "9505 JP Equity",
+        "target": "E",
+        "strength": "0.24"
+      },
+      {
+        "source": "9508 JP Equity",
+        "target": "E",
+        "strength": "0.18"
+      },
+      {
+        "source": "FJKINZ JP Equity",
+        "target": "E",
+        "strength": "0.98"
+      },
+      {
+        "source": "FTS CN Equity",
+        "target": "E",
+        "strength": "0.57"
+      },
+      {
+        "source": "IBE SM Equity",
+        "target": "E",
+        "strength": "0.41"
+      },
+      {
+        "source": "IDA US Equity",
+        "target": "E",
+        "strength": "0.73"
+      },
+      {
+        "source": "NG/ LN Equity",
+        "target": "E",
+        "strength": "0.02"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "E",
+        "strength": "0.66"
+      },
+      {
+        "source": "POR US Equity",
+        "target": "E",
+        "strength": "0.81"
+      },
+      {
+        "source": "PVS AU Equity",
+        "target": "E",
+        "strength": "0.59"
+      },
+      {
+        "source": "RELL US Equity",
+        "target": "E",
+        "strength": "0.09"
+      },
+      {
+        "source": "TEXONZ KS Equity",
+        "target": "E",
+        "strength": "0.43"
+      },
+      {
+        "source": "6490 JP Equity",
+        "target": "F",
+        "strength": "0.00"
+      },
+      {
+        "source": "6645 JP Equity",
+        "target": "F",
+        "strength": "0.70"
+      },
+      {
+        "source": "6594 JP Equity",
+        "target": "F",
+        "strength": "0.90"
+      },
+      {
+        "source": "8140 JP Equity",
+        "target": "F",
+        "strength": "0.91"
+      },
+      {
+        "source": "7510 JP Equity",
+        "target": "F",
+        "strength": "0.11"
+      },
+      {
+        "source": "6856 JP Equity",
+        "target": "F",
+        "strength": "0.14"
+      },
+      {
+        "source": "6258 JP Equity",
+        "target": "F",
+        "strength": "0.35"
+      },
+      {
+        "source": "042380 KF Equity",
+        "target": "F",
+        "strength": "0.02"
+      },
+      {
+        "source": "1248727D JP Equity",
+        "target": "F",
+        "strength": "0.92"
+      },
+      {
+        "source": "1975 JP Equity",
+        "target": "F",
+        "strength": "0.80"
+      },
+      {
+        "source": "2458 JP Equity",
+        "target": "F",
+        "strength": "0.86"
+      },
+      {
+        "source": "4272 JP Equity",
+        "target": "F",
+        "strength": "0.80"
+      },
+      {
+        "source": "4464 JP Equity",
+        "target": "F",
+        "strength": "0.79"
+      },
+      {
+        "source": "4631 JP Equity",
+        "target": "F",
+        "strength": "0.40"
+      },
+      {
+        "source": "4634 JP Equity",
+        "target": "F",
+        "strength": "0.52"
+      },
+      {
+        "source": "5214 JP Equity",
+        "target": "F",
+        "strength": "0.80"
+      },
+      {
+        "source": "5393 JP Equity",
+        "target": "F",
+        "strength": "0.80"
+      },
+      {
+        "source": "6273 JP Equity",
+        "target": "F",
+        "strength": "0.78"
+      },
+      {
+        "source": "6301 JP Equity",
+        "target": "F",
+        "strength": "0.41"
+      },
+      {
+        "source": "6349 JP Equity",
+        "target": "F",
+        "strength": "0.52"
+      },
+      {
+        "source": "6407 JP Equity",
+        "target": "F",
+        "strength": "0.81"
+      },
+      {
+        "source": "6480 JP Equity",
+        "target": "F",
+        "strength": "0.30"
+      },
+      {
+        "source": "6507 JP Equity",
+        "target": "F",
+        "strength": "0.11"
+      },
+      {
+        "source": "6654 JP Equity",
+        "target": "F",
+        "strength": "0.05"
+      },
+      {
+        "source": "6667 TT Equity",
+        "target": "F",
+        "strength": "0.93"
+      },
+      {
+        "source": "6677 JP Equity",
+        "target": "F",
+        "strength": "0.39"
+      },
+      {
+        "source": "7701 JP Equity",
+        "target": "F",
+        "strength": "0.63"
+      },
+      {
+        "source": "7911 JP Equity",
+        "target": "F",
+        "strength": "0.73"
+      },
+      {
+        "source": "8060 JP Equity",
+        "target": "F",
+        "strength": "0.49"
+      },
+      {
+        "source": "8137 JP Equity",
+        "target": "F",
+        "strength": "0.76"
+      },
+      {
+        "source": "8148 JP Equity",
+        "target": "F",
+        "strength": "0.41"
+      },
+      {
+        "source": "9363 JP Equity",
+        "target": "F",
+        "strength": "0.42"
+      },
+      {
+        "source": "9503 JP Equity",
+        "target": "F",
+        "strength": "0.00"
+      },
+      {
+        "source": "9505 JP Equity",
+        "target": "F",
+        "strength": "0.59"
+      },
+      {
+        "source": "9506 JP Equity",
+        "target": "F",
+        "strength": "0.67"
+      },
+      {
+        "source": "9508 JP Equity",
+        "target": "F",
+        "strength": "0.39"
+      },
+      {
+        "source": "ACLS US Equity",
+        "target": "F",
+        "strength": "0.92"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "F",
+        "strength": "0.89"
+      },
+      {
+        "source": "6762 JP Equity",
+        "target": "G",
+        "strength": "0.82"
+      },
+      {
+        "source": "JBL US Equity",
+        "target": "G",
+        "strength": "0.00"
+      },
+      {
+        "source": "3132 JP Equity",
+        "target": "G",
+        "strength": "0.94"
+      },
+      {
+        "source": "6645 JP Equity",
+        "target": "G",
+        "strength": "0.58"
+      },
+      {
+        "source": "8084 JP Equity",
+        "target": "G",
+        "strength": "0.15"
+      },
+      {
+        "source": "INTT US Equity",
+        "target": "G",
+        "strength": "0.34"
+      },
+      {
+        "source": "8140 JP Equity",
+        "target": "G",
+        "strength": "0.77"
+      },
+      {
+        "source": "6258 JP Equity",
+        "target": "G",
+        "strength": "0.96"
+      },
+      {
+        "source": "073570 KS Equity",
+        "target": "G",
+        "strength": "0.69"
+      },
+      {
+        "source": "092870 KS Equity",
+        "target": "G",
+        "strength": "0.91"
+      },
+      {
+        "source": "9501 JP Equity",
+        "target": "G",
+        "strength": "0.22"
+      },
+      {
+        "source": "9506 JP Equity",
+        "target": "G",
+        "strength": "0.22"
+      },
+      {
+        "source": "9508 JP Equity",
+        "target": "G",
+        "strength": "0.88"
+      },
+      {
+        "source": "9995 JP Equity",
+        "target": "G",
+        "strength": "0.33"
+      },
+      {
+        "source": "MXL US Equity",
+        "target": "G",
+        "strength": "0.39"
+      },
+      {
+        "source": "PCG US Equity",
+        "target": "G",
+        "strength": "0.12"
+      },
+      {
+        "source": "FLEX US Equity",
+        "target": "H",
+        "strength": "0.58"
+      },
+      {
+        "source": "PLXS US Equity",
+        "target": "H",
+        "strength": "0.95"
+      },
+      {
+        "source": "TTMI US Equity",
+        "target": "H",
+        "strength": "0.34"
+      },
+      {
+        "source": "INTT US Equity",
+        "target": "H",
+        "strength": "0.40"
+      },
+      {
+        "source": "131290 KS Equity",
+        "target": "H",
+        "strength": "0.83"
+      },
+      {
+        "source": "VPG US Equity",
+        "target": "H",
+        "strength": "0.30"
+      }
+    ];
+    /* Now here's where we actually create the network */
+    visualization = d3plus.viz()
+      // .id("artist_id")              // set id to match on nodes
+      .attrs(company) // attrs e.g. names, colors etc.
+      .container("#viz") // container DIV to hold the viz
+      .type("rings") // visualization type
+      .focus("A") // center node on Beyonce
+      .attrs("text", d => {
+        return d.id
+      })
+      // set text to display on nodes
+      .edges({
+        // "color": (d=> 'red'),
+        "value": edges, // set data for edges (default)
+        "label": "strength", // show edge labels
+        "arrows": true, // show directional arrows
+        // "large" :100,
+        // "size": 2, 粗細會影響到 arrows
+      })
+      // 可以點下去去呼叫其他關聯的 nodes，但是設定了就沒辦法像原本那樣的操作了
+      // .mouse({
+      //   click: function () {
+      //     console.log("Hello you");
+      //   }
+      // })
+      .draw() // finally, draw the visualization!
+  </script>
+</body>
